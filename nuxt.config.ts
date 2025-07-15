@@ -3,6 +3,10 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxt/eslint',
   ],
+  components: [
+    { path: '~/components' },
+    { path: '~/components/icons' },
+  ],
   devtools: { enabled: true },
   compatibilityDate: '2025-05-15',
   eslint: {
