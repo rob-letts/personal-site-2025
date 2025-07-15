@@ -1,0 +1,31 @@
+---
+import "src/styles/base.css";
+import SiteNav from "src/components/SiteNav.astro";
+import ThemeButton from "src/components/ThemeButton.astro";
+const { showNav = true, classes } = Astro.props;
+
+const theme = Astro.cookies.has("theme") ? Astro.cookies.get("theme").value : "";
+---
+<!DOCTYPE html>
+<html lang="en" class={theme}>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact page for Rob Letts, a Front-End Web Developer.">
+  <meta name="generator" content={Astro.generator} />
+  
+</head>
+
+<body>
+  <header>
+    <!-- {showNav && <SiteNav />} -->
+    <ThemeButton />
+  </header>
+
+  <main class={classes}>
+    <slot />
+  </main>
+</body>
+</html>

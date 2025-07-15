@@ -1,0 +1,30 @@
+---
+import SunIcon from "src/components/icons/SunIcon.astro";
+import MoonIcon from "src/components/icons/MoonIcon.astro";
+---
+<script>
+  import { updateTheme, getTheme, saveTheme } from "src/scripts/theme";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const theme = getTheme();
+
+    if (theme === undefined) {
+      const shouldSetDarkTheme = window?.matchMedia("(prefers-color-scheme: dark)").matches;
+        saveTheme(shouldSetDarkTheme);
+        updateTheme(shouldSetDarkTheme);
+      } else {
+        updateTheme(theme.includes("dark"));
+      }
+  });
+
+  document.querySelector("#theme-button")?.addEventListener("click", () => {
+    const shouldSetDarkTheme = getTheme()?.includes("light") ?? false;
+    saveTheme(shouldSetDarkTheme);
+    updateTheme(shouldSetDarkTheme);
+  });
+</script>
+
+<button id="theme-button" class="theme-button" aria-label="theme">
+  <MoonIcon />
+  <SunIcon />
+</button>

@@ -1,0 +1,42 @@
+---
+const astroPages = await Astro.glob("../pages/*.astro");
+
+function getName(filePath: string, sequenceToRemove: string) {
+  return filePath.split("/").at(-1)?.replace(sequenceToRemove, "");
+}
+
+const exceptions = ["index", "404"];
+
+const navItems = [
+  "/",
+  ...astroPages.map(page => getName(page.file, ".astro"))
+    .filter(item => !item?.startsWith("_") && !exceptions.some(exception => exception === item))
+];
+
+const pathName = Astro.url.pathname;
+const pathNameWithoutSlash = pathName.replace("/", "");
+---
+
+<nav class={pathNameWithoutSlash ? `nav nav-${pathNameWithoutSlash}` : "nav"}>
+  <ul class="nav-items">
+    {navItems.map((item) => (
+      <li class={`nav-item ${[`/${item}`, item].includes(pathName) ? "nav-item-active" : ""}`}>
+        <a href={item} class="nav-link">
+          {item}
+          </a>
+      </li>
+    ))}
+  </ul>
+
+  <div class="nav-blob">
+    <div aria-hidden="true" class="nav-overlay-items">
+      {navItems.map((item) => (
+        <div class="nav-item">
+          <span class="nav-overlay-link">
+            {item}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</nav>
