@@ -1,5 +1,13 @@
 <script setup lang="ts">
-const links = [
+import type { ConcreteComponent } from 'vue'
+
+type Link = {
+  href: string
+  icon: ConcreteComponent | string
+  label: string
+}
+
+const links: Link[] = [
   {
     href: 'https://github.com/rob-letts',
     icon: resolveComponent('GitHubIcon'),
