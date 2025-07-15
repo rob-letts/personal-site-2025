@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: DMMono;
-  src: url("/DMMono-Regular.woff2") format("woff2");
+  src: url("~/public/DMMono-Regular.woff2") format("woff2");
 }
 
 @layer theme {
