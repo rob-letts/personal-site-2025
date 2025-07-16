@@ -1,4 +1,8 @@
 <template>
+  <header>
+    <ThemeButton />
+  </header>
+
   <main>
     <h1>
       hi there
@@ -8,7 +12,8 @@
       <a
         class="name"
         href="https://github.com/rob-letts"
-      >Rob Letts
+      >
+        Rob Letts
       </a>
       — a front-end web developer based in South London.
     </p>
