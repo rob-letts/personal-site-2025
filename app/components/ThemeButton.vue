@@ -1,20 +1,22 @@
 <script setup lang="ts">
 const colorMode = useColorMode()
-const isLightMode = computed(() => colorMode.value === 'light')
 
-function updateColorMode() {
-  colorMode.value = isLightMode.value ? 'dark' : 'light'
+function updateColorModePreference() {
+  colorMode.preference = colorMode.value === 'light'
+    ? 'dark'
+    : 'light'
 }
 </script>
 
 <template>
   <button
-    @click="updateColorMode"
+    v-if="!colorMode.unknown"
+    @click="updateColorModePreference"
     id="theme-button"
     class="theme-button"
     aria-label="theme"
   >
-    <SunIcon v-if="isLightMode" />
+    <SunIcon v-if="colorMode.preference === 'light'"  />
     <MoonIcon v-else />
   </button>
 </template>
