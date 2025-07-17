@@ -11,12 +11,12 @@ function updateColorModePreference() {
 <template>
   <button
     v-if="!colorMode.unknown"
-    @click="updateColorModePreference"
     id="theme-button"
     class="theme-button"
     aria-label="theme"
+    @click="updateColorModePreference"
   >
-    <SunIcon v-if="colorMode.preference === 'light'"  />
+    <SunIcon v-if="colorMode.preference === 'light'" />
     <MoonIcon v-else />
   </button>
 </template>
