@@ -38,6 +38,11 @@ const links: Link[] = [
     icon: resolveComponent('CodepenIcon'),
     label: 'Codepen Profile',
   },
+  {
+    href: 'https://app.thestorygraph.com/profile/robletts',
+    icon: resolveComponent('StoryGraphIcon'),
+    label: 'StoryGraph Profile',
+  },
 ]
 </script>
 
